@@ -1,8 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { getAluno, getAlunos, createAluno } from './database.js';
+import { getAluno, getAlunos, createAluno } from '../database.js';
 import dotenv from 'dotenv';
+
+// adicionei essa linha
+dotenv.config();
 
 const app = express();
 
@@ -59,6 +62,8 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(process.env.APP_PORT, () => {
-    console.log(`O servidor está executando na porta ${APP_PORT}`);
+// alterei aqui também
+const port = process.env.APP_PORT || 8080;
+app.listen(port, () => {
+    console.log(`O servidor está executando na porta ${port}`);
 });
