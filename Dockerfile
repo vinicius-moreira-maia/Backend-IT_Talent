@@ -1,22 +1,22 @@
-# Usar a imagem base do Node.js
+# Imagem base
 FROM node:14
 
-# Definir o diretório de trabalho dentro do contêiner
+# Definindo o contexto de trabalho
 WORKDIR /usr/src/app
 
-# Copiar o package.json e o package-lock.json para instalar as dependências
+# Copiaando os packages para instalar as dependências
 COPY package*.json ./
 
-# Instalar as dependências
+# Instalando as dependências
 RUN npm install
 
-# Copiar o restante do código da aplicação
+# Copiando os demais arquivos
 COPY . .
 
-# Expor a porta 8080 para acessar a aplicação
+# Ecpondo a porta 8080 do container
 EXPOSE 8080
 
-# Comando para iniciar a aplicação
+# Iniciando o app
 CMD ["node", "src/app.js"]
 
 # criar imagem
